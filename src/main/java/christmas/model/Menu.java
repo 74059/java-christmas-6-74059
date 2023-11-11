@@ -1,9 +1,10 @@
 package christmas.model;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Collections;
+import java.util.Objects;
 
 public enum Menu {
     mushroomSoup("appetizer", "양송이수프", 6000, 0),
@@ -108,5 +109,15 @@ public enum Menu {
         if (countAllCnt() > 20) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static HashMap<String, Integer> countOrderMenuNameAndNum() {
+        HashMap<String, Integer> orderMenuAndNum = new HashMap<>();
+        for (Menu eachMenuValue : Menu.values()) {
+            if (eachMenuValue.cnt != 0) {
+                orderMenuAndNum.put(eachMenuValue.menu, eachMenuValue.cnt);
+            }
+        }
+        return orderMenuAndNum;
     }
 }

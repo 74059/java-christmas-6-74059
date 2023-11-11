@@ -4,6 +4,8 @@ import christmas.model.Menu;
 import christmas.view.OutputView;
 import christmas.view.InputView;
 
+import java.util.HashMap;
+
 public class ChristmasController {
     private int dates = -1;
 
@@ -12,6 +14,7 @@ public class ChristmasController {
         visitDate();
         orderMenu();
         OutputView.printEventBenefitsPreview(dates);
+        eventBenefits();
     }
 
     public void visitDate() {
@@ -42,5 +45,10 @@ public class ChristmasController {
             }
             break;
         }
+    }
+
+    public void eventBenefits() {
+        HashMap<String, Integer> orderMenuAndNum = Menu.countOrderMenuNameAndNum();
+        OutputView.printOrderMenu(orderMenuAndNum);
     }
 }
