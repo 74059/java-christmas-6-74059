@@ -53,12 +53,20 @@ public class OrderMenu {
 
     public static void checkOrderNumPart(String orderMenuNum) {
         IsTypeInt(orderMenuNum);
+        int menuNum = Integer.parseInt(orderMenuNum);
+        IsNumMoreThan1(menuNum);
     }
 
-    public static void IsTypeInt(String dates) {
+    public static void IsTypeInt(String orderMenuNum) {
         try {
-            Integer.parseInt(dates);
+            Integer.parseInt(orderMenuNum);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void IsNumMoreThan1(int orderMenuNum) {
+        if (orderMenuNum < 1) {
             throw new IllegalArgumentException();
         }
     }
