@@ -34,7 +34,7 @@ public class ChristmasController {
 
     public void orderMenu() {
         while (true) {
-            String readOrderMenu = InputView.readOrderMenu();
+            String readOrderMenu = InputView.readOrderMenu().replace(" ", "");
             if (!ExceptionController.orderMenuException(readOrderMenu)) {
                 continue;
             }
