@@ -7,6 +7,9 @@ public class OrderMenu {
     public static void menuPreprocessing(String orderMenu) {
         String rmSpaceOrderMenu = removeSpace(orderMenu);
         List<String> splitForOrderNum = splitComma(rmSpaceOrderMenu);
+        for (String orderMenuAndNum : splitForOrderNum) {
+            countOrderMenu(orderMenuAndNum);
+        }
     }
 
     public static void IsNumOfOrderMenuOver0(String orderMenus) {
@@ -22,5 +25,15 @@ public class OrderMenu {
 
     public static List<String> splitComma(String orderMenus) {
         return List.of(orderMenus.split(","));
+    }
+
+    public static void countOrderMenu(String orderMenu) {
+        IsSplitValueInOrderMenu(orderMenu);
+    }
+
+    public static void IsSplitValueInOrderMenu(String orderMenu) {
+        if (!orderMenu.contains("-")) {
+            throw new IllegalArgumentException();
+        }
     }
 }
