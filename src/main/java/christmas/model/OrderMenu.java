@@ -21,8 +21,6 @@ public class OrderMenu {
     }
 
     public static List<String> splitComma(String orderMenu) {
-        List<String> orderMenuSplitComma = List.of(orderMenu.split(","));
-        
-        return orderMenuSplitComma;
+        return List.of(orderMenu.split(","));
     }
 }
