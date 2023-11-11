@@ -81,7 +81,7 @@ public enum Menu {
     public static void isOrderOnlyDrink() {
         int allCnt = countAllCnt();
         int eachDrinkCnt = countSpecificMenuCnt("drink");
-        if (allCnt != eachDrinkCnt) {
+        if (allCnt == eachDrinkCnt) {
             throw new IllegalArgumentException();
         }
     }
