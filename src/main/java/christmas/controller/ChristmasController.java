@@ -61,4 +61,11 @@ public class ChristmasController {
         }
         return false;
     }
+
+    public void BenefitLists(int totalOrderPriceBeforeDiscount) {
+        if (totalOrderPriceBeforeDiscount < 10000) {
+            OutputView.printBenefit(false);
+            return;
+        }
+    }
 }

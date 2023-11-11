@@ -11,6 +11,7 @@ public class OutputView {
     private static final String TOTAL_ORDER_PRICE_BEFFORE_DISCOUNT = "<할인 전 총주문 금액>";
     private static final String GIVE_SERVICE_MESS = "<증정 메뉴>";
     private static final String GIVE_CHAMPAGNE = "샴페인 1개";
+    private static final String BENEFIT_LISTS = "<혜택 내역>";
     private static final String ORDER_NUM_UNIT = "개";
     private static final String PRICE_UNIT = "원";
     private static final String NOTHING = "없음";
@@ -46,5 +47,14 @@ public class OutputView {
             return;
         }
         System.out.println(NOTHING);
+    }
+
+    public static void printBenefit(boolean overTenThousand) {
+        System.out.println(BENEFIT_LISTS);
+        if (!overTenThousand) {
+            System.out.println(NOTHING);
+            return;
+        }
+        System.out.println();
     }
 }
