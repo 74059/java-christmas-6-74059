@@ -7,7 +7,7 @@ import christmas.view.ExceptionView;
 public class ExceptionController {
     public static boolean visitDateExceptionNotNum(String dates) {
         try {
-            VisitDate.IsTypeInt(dates);
+            VisitDate.isTypeInt(dates);
             return true;
         } catch (IllegalArgumentException e) {
             ExceptionView.exceptionInvalidDateMess();
@@ -17,7 +17,7 @@ public class ExceptionController {
 
     public static boolean visitDateExceptionNotInRange(int dates) {
         try {
-            VisitDate.IsRange1To31(dates);
+            VisitDate.isRange1To31(dates);
             return true;
         } catch (IllegalArgumentException e) {
             ExceptionView.exceptionInvalidDateMess();

@@ -17,47 +17,47 @@ public class OrderMenu {
             partOfMenu.add(customerOrder);
         }
 
-        IsChangeNumWhenMenuDuplicate(partOfMenu);
+        isChangeNumWhenMenuDuplicate(partOfMenu);
     }
 
-    public static void IsNumOfOrderMenuOver0(String orderMenus) {
+    public static void isNumOfOrderMenuOver0(String orderMenus) {
         if (Objects.equals(orderMenus, "")) {
             throw new IllegalArgumentException();
         }
     }
 
     public static String removeSpace(String orderMenus) {
-        IsNumOfOrderMenuOver0(orderMenus);
+        isNumOfOrderMenuOver0(orderMenus);
         return orderMenus.replace(" ", "");
     }
 
     public static List<String> splitComma(String orderMenus) {
         List<String> splitWithComma = List.of(orderMenus.split(","));
-        IsNothingInOrderMenu(splitWithComma);
+        isNothingInOrderMenu(splitWithComma);
         return splitWithComma;
     }
 
-    public static void IsNothingInOrderMenu(List<String> orderMenus) {
+    public static void isNothingInOrderMenu(List<String> orderMenus) {
         if (orderMenus.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
 
     public static String makeOrderMenuForInput(String orderMenu) {
-        IsSplitValueInOrderMenu(orderMenu);
+        isSplitValueInOrderMenu(orderMenu);
         List<String> orderMenuSplit = splitHyphen(orderMenu);
         checkOrderNumPart(orderMenuSplit.get(1));
         checkOrderMenuPart(orderMenuSplit.get(0));
         return orderMenuSplit.get(0);
     }
 
-    public static void IsSplitValueInOrderMenu(String orderMenu) {
+    public static void isSplitValueInOrderMenu(String orderMenu) {
         if (!orderMenu.contains("-")) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void IsContainSize2(List<String> orderMenu) {
+    public static void isContainSize2(List<String> orderMenu) {
         if (orderMenu.size() != 2) {
             throw new IllegalArgumentException();
         }
@@ -65,17 +65,17 @@ public class OrderMenu {
 
     public static List<String> splitHyphen(String orderMenu) {
         List<String> orderMenuSplit = List.of(orderMenu.split("-"));
-        IsContainSize2(orderMenuSplit);
+        isContainSize2(orderMenuSplit);
         return orderMenuSplit;
     }
 
     public static void checkOrderNumPart(String orderMenuNum) {
-        IsTypeInt(orderMenuNum);
+        isTypeInt(orderMenuNum);
         int menuNum = Integer.parseInt(orderMenuNum);
-        IsNumMoreThan1(menuNum);
+        isNumMoreThan1(menuNum);
     }
 
-    public static void IsTypeInt(String orderMenuNum) {
+    public static void isTypeInt(String orderMenuNum) {
         try {
             Integer.parseInt(orderMenuNum);
         } catch (NumberFormatException e) {
@@ -83,7 +83,7 @@ public class OrderMenu {
         }
     }
 
-    public static void IsNumMoreThan1(int orderMenuNum) {
+    public static void isNumMoreThan1(int orderMenuNum) {
         if (orderMenuNum < 1) {
             throw new IllegalArgumentException();
         }
@@ -91,16 +91,16 @@ public class OrderMenu {
 
     public static void checkOrderMenuPart(String orderMenu) {
         List<String> allMenu = Menu.getAllMenu();
-        IsReadMenuInMenu(allMenu, orderMenu);
+        isReadMenuInMenu(allMenu, orderMenu);
     }
 
-    public static void IsReadMenuInMenu(List<String> allMenu, String orderMenu) {
+    public static void isReadMenuInMenu(List<String> allMenu, String orderMenu) {
         if (!allMenu.contains(orderMenu)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void IsChangeNumWhenMenuDuplicate(List<String> orderMenu) {
+    public static void isChangeNumWhenMenuDuplicate(List<String> orderMenu) {
         Set<String> dupOrderMenu = new HashSet<>(orderMenu);
         if (orderMenu.size() != dupOrderMenu.size()) {
             throw new IllegalArgumentException();
