@@ -45,4 +45,14 @@ public class ExceptionController {
             return false;
         }
     }
+
+    public static boolean orderMenuOver20Exception() {
+        try {
+            Menu.isMenuCntNotOver20();
+            return true;
+        } catch (IllegalArgumentException e) {
+            ExceptionView.exceptionOrderOver20Mess();
+            return false;
+        }
+    }
 }

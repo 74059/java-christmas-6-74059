@@ -39,6 +39,9 @@ public class ChristmasController {
             if (!ExceptionController.orderMenuOnlyDrinkException()) {
                 continue;
             }
+            if (!ExceptionController.orderMenuOver20Exception()) {
+                continue;
+            }
             break;
         }
     }

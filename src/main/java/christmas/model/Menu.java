@@ -94,4 +94,10 @@ public enum Menu {
         }
         return eachDrinkCnt;
     }
+
+    public static void isMenuCntNotOver20() {
+        if (countAllCnt() > 20) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
