@@ -29,18 +29,13 @@ public class ChristmasController {
     }
 
     public void orderMenu() {
-        String readOrderMenu;
         while (true) {
-            readOrderMenu = InputView.readOrderMenu();
+            String readOrderMenu = InputView.readOrderMenu();
             if (!ExceptionController.orderMenuException(readOrderMenu)) {
                 continue;
             }
             Menu.updateOrder(readOrderMenu);
-            if (!ExceptionController.orderMenuOnlyDrinkException()) {
-                Menu.removeAllCnt();
-                continue;
-            }
-            if (!ExceptionController.orderMenuOver20Exception()) {
+            if (!ExceptionController.orderMenuOnlyDrinkException() || !ExceptionController.orderMenuOver20Exception()) {
                 Menu.removeAllCnt();
                 continue;
             }
