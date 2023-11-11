@@ -1,7 +1,9 @@
 package christmas.view;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.text.DecimalFormat;
+import java.util.List;
 
 public class OutputView {
     private static final String START_EVENT_MESS = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
@@ -13,6 +15,7 @@ public class OutputView {
     private static final String GIVE_CHAMPAGNE = "샴페인 1개";
     private static final String BENEFIT_LISTS = "<혜택 내역>";
     private static final String CHRISTMAS_D_DAY = "크리스마스 디데이 할인: -";
+    private static final String BENEFIT = " 할인: -";
     private static final String ORDER_NUM_UNIT = "개";
     private static final String PRICE_UNIT = "원";
     private static final String NOTHING = "없음";
@@ -63,5 +66,9 @@ public class OutputView {
             DecimalFormat decFormat = new DecimalFormat("###,###");
             System.out.println(CHRISTMAS_D_DAY + decFormat.format(christmasDDayB) + PRICE_UNIT);
         }
+    }
+
+    public static void printWeekDayEnd(List<Serializable> weekDayEndBenefit) {
+        System.out.println(weekDayEndBenefit.get(0) + BENEFIT + weekDayEndBenefit.get(1));
     }
 }

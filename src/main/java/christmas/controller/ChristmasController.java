@@ -4,7 +4,8 @@ import christmas.model.Menu;
 import christmas.view.OutputView;
 import christmas.view.InputView;
 
-import java.util.HashMap;
+import java.io.Serializable;
+import java.util.List;
 
 public class ChristmasController {
     private int dates = -1;
@@ -68,6 +69,7 @@ public class ChristmasController {
             return;
         }
         OutputView.printChristmasDDay(christmasDDayBenefit());
+        OutputView.printWeekDayEnd(weekDayEndBenefit());
     }
 
     public int christmasDDayBenefit() {
@@ -75,5 +77,12 @@ public class ChristmasController {
             return 3400 - (100 * dates);
         }
         return 0;
+    }
+
+    public List<Serializable> weekDayEndBenefit() {
+        if ((dates % 7) == 1 || (dates % 7) == 2) {
+            return List.of("주말", Menu.countSpecificMenuCnt("main") * 2023);
+        }
+        return List.of("평일", Menu.countSpecificMenuCnt("dessert") * 2023);
     }
 }
