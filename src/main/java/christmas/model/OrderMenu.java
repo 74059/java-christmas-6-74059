@@ -8,7 +8,7 @@ public class OrderMenu {
         String rmSpaceOrderMenu = removeSpace(orderMenu);
         List<String> splitForOrderNum = splitComma(rmSpaceOrderMenu);
         for (String orderMenuAndNum : splitForOrderNum) {
-            countOrderMenu(orderMenuAndNum);
+            makeOrderMenuForInput(orderMenuAndNum);
         }
     }
 
@@ -27,9 +27,10 @@ public class OrderMenu {
         return List.of(orderMenus.split(","));
     }
 
-    public static void countOrderMenu(String orderMenu) {
+    public static void makeOrderMenuForInput(String orderMenu) {
         IsSplitValueInOrderMenu(orderMenu);
-        splitHyphen(orderMenu);
+        List<String> orderMenuSplit = splitHyphen(orderMenu);
+        checkOrderNumPart(orderMenuSplit.get(1));
     }
 
     public static void IsSplitValueInOrderMenu(String orderMenu) {
@@ -48,5 +49,17 @@ public class OrderMenu {
         List<String> orderMenuSplit = List.of(orderMenu.split("-"));
         IsContainSize2(orderMenuSplit);
         return orderMenuSplit;
+    }
+
+    public static void checkOrderNumPart(String orderMenuNum) {
+        IsTypeInt(orderMenuNum);
+    }
+
+    public static void IsTypeInt(String dates) {
+        try {
+            Integer.parseInt(dates);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
