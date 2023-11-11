@@ -36,4 +36,19 @@ public enum Menu {
         }
         return allMenu;
     }
+
+    public static void updateOrder(String orderMenus) {
+        Menu[] menuValue = Menu.values();
+        List<String> order = List.of(orderMenus.split(","));
+        for (String eachOrder : order) {
+            List<String> menuAndNum = List.of(eachOrder.split("-"));
+            countOrder(menuValue, menuAndNum);
+        }
+    }
+
+    public static void countOrder(Menu[] menuValue, List<String> menuAndNum) {
+        List<String> allMenu = getAllMenu();
+        int menuIndex = allMenu.indexOf(menuAndNum.get(0));
+        menuValue[menuIndex].cnt += Integer.parseInt(menuAndNum.get(1));
+    }
 }

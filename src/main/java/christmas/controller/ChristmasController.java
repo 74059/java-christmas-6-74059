@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.Menu;
 import christmas.view.OutputView;
 import christmas.view.InputView;
 
@@ -28,12 +29,14 @@ public class ChristmasController {
     }
 
     public void orderMenu() {
+        String readOrderMenu;
         while (true) {
-            String readOrderMenu = InputView.readOrderMenu();
+            readOrderMenu = InputView.readOrderMenu();
             if (!ExceptionController.orderMenuException(readOrderMenu)) {
                 continue;
             }
             break;
         }
+        Menu.updateOrder(readOrderMenu);
     }
 }
