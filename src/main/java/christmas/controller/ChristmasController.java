@@ -25,4 +25,8 @@ public class ChristmasController {
             this.dates = dates;
         }
     }
+
+    public void orderMenu() {
+        String orderMenu = InputView.readOrderMenu();
+    }
 }
