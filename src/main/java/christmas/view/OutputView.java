@@ -12,6 +12,7 @@ public class OutputView {
     private static final String GIVE_SERVICE_MESS = "<증정 메뉴>";
     private static final String GIVE_CHAMPAGNE = "샴페인 1개";
     private static final String BENEFIT_LISTS = "<혜택 내역>";
+    private static final String CHRISTMAS_D_DAY = "크리스마스 디데이 할인: -";
     private static final String ORDER_NUM_UNIT = "개";
     private static final String PRICE_UNIT = "원";
     private static final String NOTHING = "없음";
@@ -55,6 +56,12 @@ public class OutputView {
             System.out.println(NOTHING);
             return;
         }
-        System.out.println();
+    }
+
+    public static void printChristmasDDay(int christmasDDayB) {
+        if (christmasDDayB != 0) {
+            DecimalFormat decFormat = new DecimalFormat("###,###");
+            System.out.println(CHRISTMAS_D_DAY + decFormat.format(christmasDDayB) + PRICE_UNIT);
+        }
     }
 }

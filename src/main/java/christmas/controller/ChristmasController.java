@@ -67,5 +67,13 @@ public class ChristmasController {
             OutputView.printBenefit(false);
             return;
         }
+        OutputView.printChristmasDDay(christmasDDayBenefit());
+    }
+
+    public int christmasDDayBenefit() {
+        if ((25 - dates) >= 0) {
+            return 3400 - (100 * dates);
+        }
+        return 0;
     }
 }
