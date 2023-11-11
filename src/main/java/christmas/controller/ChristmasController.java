@@ -11,6 +11,7 @@ public class ChristmasController {
         OutputView.printStartEvent();
         visitDate();
         orderMenu();
+        OutputView.printEventBenefitsPreview(dates);
     }
 
     public void visitDate() {
