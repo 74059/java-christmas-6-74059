@@ -5,14 +5,15 @@ import christmas.view.InputView;
 
 public class ChristmasController {
     private int dates = -1;
-    public void run () {
+
+    public void run() {
         OutputView.printStartEvent();
         visitDate();
     }
 
-    public void visitDate () {
+    public void visitDate() {
         while (dates == -1) {
-            String visitDate =  InputView.readDate();
+            String visitDate = InputView.readDate();
             if (!ExceptionController.visitDateExceptionNotNum(visitDate)) {
                 continue;
             }
