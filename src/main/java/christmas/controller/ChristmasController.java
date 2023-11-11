@@ -48,7 +48,8 @@ public class ChristmasController {
     }
 
     public void eventBenefits() {
-        HashMap<String, Integer> orderMenuAndNum = Menu.countOrderMenuNameAndNum();
-        OutputView.printOrderMenu(orderMenuAndNum);
+        OutputView.printOrderMenu(Menu.countOrderMenuNameAndNum());
+        int totalOrderPriceBeforeDiscount = Menu.totalOrderPrice();
+        OutputView.printTotalOrderPriceBeforeDiscount(totalOrderPriceBeforeDiscount);
     }
 }

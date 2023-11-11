@@ -120,4 +120,14 @@ public enum Menu {
         }
         return orderMenuAndNum;
     }
+
+    public static int totalOrderPrice() {
+        int orderPrice = 0;
+        for (Menu eachMenuValue : Menu.values()) {
+            if (eachMenuValue.cnt != 0) {
+                orderPrice += (eachMenuValue.price * eachMenuValue.cnt);
+            }
+        }
+        return orderPrice;
+    }
 }
