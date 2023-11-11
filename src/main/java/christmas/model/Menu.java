@@ -2,6 +2,7 @@ package christmas.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public enum Menu {
     mushroomSoup("appetizer", "양송이수프", 6000, 0),
@@ -37,6 +38,30 @@ public enum Menu {
         return allMenu;
     }
 
+    public static int countAllCnt() {
+        int allCnt = 0;
+        for (Menu eachMenu : Menu.values()) {
+            allCnt += eachMenu.cnt;
+        }
+        return allCnt;
+    }
+
+    public static List<Menu> getMenuOfSpecificMenuType(String menuType) {
+        List<Menu> specificMenuType = new ArrayList<>();
+        for (Menu eachMenu : Menu.values()) {
+            specificMenuType.add(checkMenuType(eachMenu, menuType));
+        }
+        specificMenuType.remove(null);
+        return specificMenuType;
+    }
+
+    public static Menu checkMenuType(Menu eachMenu, String menuType) {
+        if (Objects.equals(eachMenu.menuType, menuType)) {
+            return eachMenu;
+        }
+        return null;
+    }
+
     public static void updateOrder(String orderMenus) {
         Menu[] menuValue = Menu.values();
         List<String> order = List.of(orderMenus.split(","));
@@ -50,5 +75,22 @@ public enum Menu {
         List<String> allMenu = getAllMenu();
         int menuIndex = allMenu.indexOf(menuAndNum.get(0));
         menuValue[menuIndex].cnt += Integer.parseInt(menuAndNum.get(1));
+    }
+
+    public static void isOrderOnlyDrink() {
+        int allCnt = countAllCnt();
+        int eachDrinkCnt = countSpecificMenuCnt("drink");
+        if (allCnt != eachDrinkCnt) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static int countSpecificMenuCnt(String menuType) {
+        List<Menu> drinkMenu = getMenuOfSpecificMenuType(menuType);
+        int eachDrinkCnt = 0;
+        for (Menu eachDrinkMenu:drinkMenu) {
+            eachDrinkCnt += eachDrinkMenu.cnt;
+        }
+        return eachDrinkCnt;
     }
 }

@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.model.OrderMenu;
+import christmas.model.Menu;
 import christmas.model.VisitDate;
 import christmas.view.ExceptionView;
 
@@ -31,6 +32,16 @@ public class ExceptionController {
             return true;
         } catch (IllegalArgumentException e) {
             ExceptionView.exceptionInvalidOrderMenuMess();
+            return false;
+        }
+    }
+
+    public static boolean orderMenuOnlyDrinkException() {
+        try {
+            Menu.isOrderOnlyDrink();
+            return true;
+        } catch (IllegalArgumentException e) {
+            ExceptionView.exceptionOrderOnlyDrinkMess();
             return false;
         }
     }

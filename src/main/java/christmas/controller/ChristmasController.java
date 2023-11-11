@@ -35,8 +35,11 @@ public class ChristmasController {
             if (!ExceptionController.orderMenuException(readOrderMenu)) {
                 continue;
             }
+            Menu.updateOrder(readOrderMenu);
+            if (!ExceptionController.orderMenuOnlyDrinkException()) {
+                continue;
+            }
             break;
         }
-        Menu.updateOrder(readOrderMenu);
     }
 }
