@@ -32,7 +32,15 @@ public class OrderMenu {
     }
 
     public static List<String> splitComma(String orderMenus) {
-        return List.of(orderMenus.split(","));
+        List<String> splitWithComma = List.of(orderMenus.split(","));
+        IsNothingInOrderMenu(splitWithComma);
+        return splitWithComma;
+    }
+
+    public static void IsNothingInOrderMenu(List<String> orderMenus) {
+        if (orderMenus.size() == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static String makeOrderMenuForInput(String orderMenu) {
