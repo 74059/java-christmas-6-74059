@@ -11,5 +11,6 @@ public class OutputView {
 
     public static void printEventBenefitsPreview(int dates) {
         System.out.println(EVENT_BENEFITS_PREVIEW_MESS_FRONT + dates + EVENT_BENEFITS_PREVIEW_MESS_BACK);
+        System.out.println();
     }
 }
