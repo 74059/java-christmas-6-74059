@@ -1,8 +1,8 @@
 package christmas.controller;
 
 import christmas.model.OrderMenu;
-import christmas.view.ExceptionView;
 import christmas.model.VisitDate;
+import christmas.view.ExceptionView;
 
 public class ExceptionController {
     public static boolean visitDateExceptionNotNum(String dates) {
