@@ -3,6 +3,7 @@ package christmas.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Collections;
 
 public enum Menu {
     mushroomSoup("appetizer", "양송이수프", 6000, 0),
@@ -51,7 +52,7 @@ public enum Menu {
         for (Menu eachMenu : Menu.values()) {
             specificMenuType.add(checkMenuType(eachMenu, menuType));
         }
-        specificMenuType.remove(null);
+        specificMenuType.removeAll(Collections.singletonList(null));
         return specificMenuType;
     }
 
