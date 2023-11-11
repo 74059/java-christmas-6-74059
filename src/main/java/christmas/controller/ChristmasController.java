@@ -37,9 +37,11 @@ public class ChristmasController {
             }
             Menu.updateOrder(readOrderMenu);
             if (!ExceptionController.orderMenuOnlyDrinkException()) {
+                Menu.removeAllCnt();
                 continue;
             }
             if (!ExceptionController.orderMenuOver20Exception()) {
+                Menu.removeAllCnt();
                 continue;
             }
             break;

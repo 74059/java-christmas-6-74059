@@ -47,6 +47,15 @@ public enum Menu {
         return allCnt;
     }
 
+    public static void removeAllCnt() {
+        Menu[] menuValue = Menu.values();
+        for (Menu eachMenuValue : menuValue) {
+            if (eachMenuValue.cnt != 0) {
+                eachMenuValue.cnt = 0;
+            }
+        }
+    }
+
     public static List<Menu> getMenuOfSpecificMenuType(String menuType) {
         List<Menu> specificMenuType = new ArrayList<>();
         for (Menu eachMenu : Menu.values()) {
