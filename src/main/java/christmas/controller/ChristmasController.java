@@ -29,8 +29,8 @@ public class ChristmasController {
 
     public void orderMenu() {
         while (true) {
-            String orderMenu = InputView.readOrderMenu();
-            if (!ExceptionController.orderMenuException(orderMenu)) {
+            String readOrderMenu = InputView.readOrderMenu();
+            if (!ExceptionController.orderMenuException(readOrderMenu)) {
                 continue;
             }
             break;
