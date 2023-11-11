@@ -8,4 +8,10 @@ public class Exceptions {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void IsRange1To31(int dates) {
+        if (!(dates >= 1 && dates <= 31)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
