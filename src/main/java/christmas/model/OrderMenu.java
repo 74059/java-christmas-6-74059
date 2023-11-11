@@ -29,11 +29,24 @@ public class OrderMenu {
 
     public static void countOrderMenu(String orderMenu) {
         IsSplitValueInOrderMenu(orderMenu);
+        splitHyphen(orderMenu);
     }
 
     public static void IsSplitValueInOrderMenu(String orderMenu) {
         if (!orderMenu.contains("-")) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static void IsContainSize2(List<String> orderMenu) {
+        if (orderMenu.size() != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static List<String> splitHyphen(String orderMenu) {
+        List<String> orderMenuSplit = List.of(orderMenu.split("-"));
+        IsContainSize2(orderMenuSplit);
+        return orderMenuSplit;
     }
 }
