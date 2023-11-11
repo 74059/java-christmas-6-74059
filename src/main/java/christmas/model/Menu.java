@@ -17,9 +17,9 @@ public enum Menu {
     redWine("drink", "레드와인", 60000, 0),
     champagne("drink", "샴페인", 25000, 0);
 
-    private String menuType;
-    private String menu;
-    private int price;
+    private final String menuType;
+    private final String menu;
+    private final int price;
     private int cnt;
 
     Menu(String menuType, String menu, int price, int cnt) {
