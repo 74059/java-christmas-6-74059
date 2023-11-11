@@ -9,8 +9,11 @@ public class OutputView {
     private static final String EVENT_BENEFITS_PREVIEW_MESS_BACK = "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String ORDER_MENU_START_MESS = "<주문 메뉴>";
     private static final String TOTAL_ORDER_PRICE_BEFFORE_DISCOUNT = "<할인 전 총주문 금액>";
+    private static final String GIVE_SERVICE_MESS = "<증정 메뉴>";
+    private static final String GIVE_CHAMPAGNE = "샴페인 1개";
     private static final String ORDER_NUM_UNIT = "개";
     private static final String PRICE_UNIT = "원";
+    private static final String NOTHING = "없음";
 
     public static void printStartEvent() {
         System.out.println(START_EVENT_MESS);
@@ -34,5 +37,14 @@ public class OutputView {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         System.out.println(decFormat.format(priceBeforeDiscount) + PRICE_UNIT);
         System.out.println();
+    }
+
+    public static void printCanGetChampagne(boolean canGetChampagne) {
+        System.out.println(GIVE_SERVICE_MESS);
+        if (canGetChampagne) {
+            System.out.println(GIVE_CHAMPAGNE);
+            return;
+        }
+        System.out.println(NOTHING);
     }
 }
