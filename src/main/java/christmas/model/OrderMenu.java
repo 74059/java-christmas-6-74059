@@ -9,18 +9,18 @@ public class OrderMenu {
         List<String> splitForOrderNum = splitComma(rmSpaceOrderMenu);
     }
 
-    public static void IsNumOfOrderMenuOver0(String orderMenu) {
-        if (Objects.equals(orderMenu, "")) {
+    public static void IsNumOfOrderMenuOver0(String orderMenus) {
+        if (Objects.equals(orderMenus, "")) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static String removeSpace(String orderMenu) {
-        IsNumOfOrderMenuOver0(orderMenu);
-        return orderMenu.replace(" ", "");
+    public static String removeSpace(String orderMenus) {
+        IsNumOfOrderMenuOver0(orderMenus);
+        return orderMenus.replace(" ", "");
     }
 
-    public static List<String> splitComma(String orderMenu) {
-        return List.of(orderMenu.split(","));
+    public static List<String> splitComma(String orderMenus) {
+        return List.of(orderMenus.split(","));
     }
 }
