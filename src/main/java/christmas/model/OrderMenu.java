@@ -38,7 +38,7 @@ public class OrderMenu {
     }
 
     public static void IsNothingInOrderMenu(List<String> orderMenus) {
-        if (orderMenus.size() == 0) {
+        if (orderMenus.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
