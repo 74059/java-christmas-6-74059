@@ -1,12 +1,12 @@
 package christmas.controller;
 
 import christmas.view.ExceptionView;
-import christmas.model.Exceptions;
+import christmas.model.VisitDate;
 
 public class ExceptionController {
     public static boolean visitDateExceptionNotNum(String dates) {
         try {
-            Exceptions.IsTypeInt(dates);
+            VisitDate.IsTypeInt(dates);
             return true;
         } catch (IllegalArgumentException e) {
             ExceptionView.exceptionInvalidDateMess();
@@ -16,7 +16,7 @@ public class ExceptionController {
 
     public static boolean visitDateExceptionNotInRange(int dates) {
         try {
-            Exceptions.IsRange1To31(dates);
+            VisitDate.IsRange1To31(dates);
             return true;
         } catch (IllegalArgumentException e) {
             ExceptionView.exceptionInvalidDateMess();

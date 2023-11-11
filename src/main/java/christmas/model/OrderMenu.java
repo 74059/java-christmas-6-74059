@@ -2,7 +2,7 @@ package christmas.model;
 
 import java.util.List;
 
-public class ReservationRestaurant {
+public class OrderMenu {
     public static void menuPreprocessing(String orderMenu) {
         String rmSpaceOrderMenu = removeSpace(orderMenu);
         List<String> splitForOrderNum = splitComma(rmSpaceOrderMenu);

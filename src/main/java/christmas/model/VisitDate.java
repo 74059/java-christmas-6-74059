@@ -1,6 +1,6 @@
 package christmas.model;
 
-public class Exceptions {
+public class VisitDate {
     public static void IsTypeInt(String dates) {
         try {
             Integer.parseInt(dates);
