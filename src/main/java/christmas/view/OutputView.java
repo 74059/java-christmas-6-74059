@@ -15,6 +15,7 @@ public class OutputView {
     private static final String GIVE_CHAMPAGNE = "샴페인 1개";
     private static final String BENEFIT_LISTS = "<혜택 내역>";
     private static final String CHRISTMAS_D_DAY = "크리스마스 디데이 할인: -";
+    private static final String SPECIAL = "특별";
     private static final String BENEFIT = " 할인: -";
     private static final String ORDER_NUM_UNIT = "개";
     private static final String PRICE_UNIT = "원";
@@ -61,10 +62,11 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printBenefit(int dDayBenefit, List<Serializable> weekDayEndBenefit) {
+    public static void printBenefit(int dDayBenefit, List<Serializable> weekDayEndBenefit, int specialDiscount) {
         System.out.println(BENEFIT_LISTS);
         printChristmasDDay(dDayBenefit);
         printWeekDayEnd(weekDayEndBenefit);
+        printSpecialDiscount(specialDiscount);
     }
 
     public static void printChristmasDDay(int christmasDDayB) {
@@ -77,5 +79,12 @@ public class OutputView {
     public static void printWeekDayEnd(List<Serializable> weekDayEndBenefit) {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         System.out.println(weekDayEndBenefit.get(0) + BENEFIT + decFormat.format(weekDayEndBenefit.get(1)) + PRICE_UNIT);
+    }
+
+    public static void printSpecialDiscount(int specialDiscount) {
+        if (specialDiscount != 0) {
+            DecimalFormat decFormat = new DecimalFormat("###,###");
+            System.out.println(SPECIAL + BENEFIT + decFormat.format(specialDiscount) + PRICE_UNIT);
+        }
     }
 }

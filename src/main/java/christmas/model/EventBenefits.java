@@ -17,4 +17,11 @@ public class EventBenefits {
         }
         return List.of("평일", Menu.countSpecificMenuCnt("dessert") * 2023);
     }
+
+    public static int specialDiscount(int dates) {
+        if ((dates % 7) == 3 || dates == 25) {
+            return 1000;
+        }
+        return 0;
+    }
 }

@@ -72,6 +72,7 @@ public class ChristmasController {
         }
         int christmasDDayBenefit = EventBenefits.christmasDDayBenefit(dates);
         List<Serializable> weekDayEndBenefit = EventBenefits.weekDayEndBenefit(dates);
-        OutputView.printBenefit(christmasDDayBenefit, weekDayEndBenefit);
+        int specialDiscount = EventBenefits.specialDiscount(dates);
+        OutputView.printBenefit(christmasDDayBenefit, weekDayEndBenefit, specialDiscount);
     }
 }
