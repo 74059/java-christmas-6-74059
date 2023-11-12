@@ -56,6 +56,13 @@ public class OutputView {
     public static void printNoBenefit() {
         System.out.println(BENEFIT_LISTS);
         System.out.println(NOTHING);
+        System.out.println();
+    }
+
+    public static void printBenefit(int dDayBenefit, List<Serializable> weekDayEndBenefit) {
+        System.out.println(BENEFIT_LISTS);
+        printChristmasDDay(dDayBenefit);
+        printWeekDayEnd(weekDayEndBenefit);
     }
 
     public static void printChristmasDDay(int christmasDDayB) {
@@ -66,6 +73,7 @@ public class OutputView {
     }
 
     public static void printWeekDayEnd(List<Serializable> weekDayEndBenefit) {
-        System.out.println(weekDayEndBenefit.get(0) + BENEFIT + weekDayEndBenefit.get(1));
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        System.out.println(weekDayEndBenefit.get(0) + BENEFIT + decFormat.format(weekDayEndBenefit.get(1)) + PRICE_UNIT);
     }
 }

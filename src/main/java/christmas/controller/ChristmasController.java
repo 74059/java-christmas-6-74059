@@ -69,6 +69,7 @@ public class ChristmasController {
             OutputView.printNoBenefit();
             return;
         }
+        OutputView.printBenefit(christmasDDayBenefit(), weekDayEndBenefit());
     }
 
     public int christmasDDayBenefit() {
