@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 public class EventBenefits {
+    private static final String BADGE_SANTA = "산타";
+    private static final String BADGE_TREE = "트리";
+    private static final String BADGE_STAR = "별";
+    private static final String BADGE_NOTHING = "없음";
+
     public static int canGetChampagne(int totalOrderPriceBeforeDiscount) {
         if (totalOrderPriceBeforeDiscount >= 120000) {
             return 25000;
@@ -30,5 +35,18 @@ public class EventBenefits {
             return 1000;
         }
         return 0;
+    }
+
+    public static String decemberEventBadge(int benefitPrice) {
+        if (benefitPrice > 20000) {
+            return BADGE_SANTA;
+        }
+        if (benefitPrice > 10000) {
+            return BADGE_TREE;
+        }
+        if (benefitPrice > 5000) {
+            return BADGE_STAR;
+        }
+        return BADGE_NOTHING;
     }
 }

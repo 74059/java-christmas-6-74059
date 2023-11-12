@@ -20,6 +20,7 @@ public class ChristmasController {
         OutputView.printEventBenefitsPreview(dates);
         showEventBenefits();
         predictPayAfterDiscount();
+        OutputView.printDecemberEventBadge(EventBenefits.decemberEventBadge(totalBenefitPrice + givePresent));
     }
 
     public void visitDate() {

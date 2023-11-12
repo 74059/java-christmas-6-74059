@@ -20,6 +20,7 @@ public class OutputView {
     private static final String PRESENT_EVENT = "증정 이벤트: -";
     private static final String TOTAL_BENEFIT_PRICE = "<총혜택 금액>";
     private static final String PREDICT_PAY = "<할인 후 예상 결제 금액>";
+    private static final String DECEMBER_EVENT_BADGE = "<12월 이벤트 배지>";
     private static final String ORDER_NUM_UNIT = "개";
     private static final String PRICE_UNIT = "원";
     private static final String NOTHING = "없음";
@@ -121,5 +122,10 @@ public class OutputView {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         System.out.println(decFormat.format(predictPay) + PRICE_UNIT);
         System.out.println();
+    }
+
+    public static void printDecemberEventBadge(String badge) {
+        System.out.println(DECEMBER_EVENT_BADGE);
+        System.out.println(badge);
     }
 }
