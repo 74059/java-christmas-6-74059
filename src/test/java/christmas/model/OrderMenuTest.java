@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class OrderMenuTest {
+    List<String> NOTHING = List.of(new String[]{});
 
     @DisplayName("읽어온 메뉴-개수 에 공백이 있으면 제거한다.")
     @Test
@@ -24,5 +25,12 @@ public class OrderMenuTest {
         List<String> SPLIT_WITH_COMMA = List.of(new String[]{"해산물파스타-2", "레드와인-1"});
         List<String> splitCommaOrderMenu = OrderMenu.splitComma(ORDER_MENU);
         Assertions.assertThat(splitCommaOrderMenu).isEqualTo(SPLIT_WITH_COMMA);
+    }
+
+    @DisplayName("읽어온 메뉴-개수 의 개수가 없다면 예외가 발생한다.")
+    @Test
+    void orderMenuNothing() {
+        Assertions.assertThatThrownBy(() -> OrderMenu.isNothingInOrderMenu(NOTHING))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
