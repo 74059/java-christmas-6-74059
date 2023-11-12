@@ -78,8 +78,11 @@ public class OutputView {
     }
 
     public static void printWeekDayEnd(List<Serializable> weekDayEndBenefit) {
-        DecimalFormat decFormat = new DecimalFormat("###,###");
-        System.out.println(weekDayEndBenefit.get(0) + BENEFIT + decFormat.format(weekDayEndBenefit.get(1)) + PRICE_UNIT);
+        int benefitPrice = (int) weekDayEndBenefit.get(1);
+        if (benefitPrice != 0) {
+            DecimalFormat decFormat = new DecimalFormat("###,###");
+            System.out.println(weekDayEndBenefit.get(0) + BENEFIT + decFormat.format(benefitPrice) + PRICE_UNIT);
+        }
     }
 
     public static void printSpecialDiscount(int specialDiscount) {
