@@ -120,5 +120,6 @@ public class OutputView {
         System.out.println(PREDICT_PAY);
         DecimalFormat decFormat = new DecimalFormat("###,###");
         System.out.println(decFormat.format(predictPay) + PRICE_UNIT);
+        System.out.println();
     }
 }
