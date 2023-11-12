@@ -29,7 +29,7 @@ public class OrderMenuTest {
 
     @DisplayName("읽어온 메뉴-개수 의 개수가 없다면 예외가 발생한다.")
     @Test
-    void orderMenuNothing() {
+    void createOrderMenuNothing() {
         Assertions.assertThatThrownBy(() -> OrderMenu.isNothingInOrderMenu(NOTHING))
                 .isInstanceOf(IllegalArgumentException.class);
     }
