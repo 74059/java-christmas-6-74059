@@ -99,7 +99,7 @@ public enum Menu {
     public static int countSpecificMenuCnt(String menuType) {
         List<Menu> drinkMenu = getMenuOfSpecificMenuType(menuType);
         int eachDrinkCnt = 0;
-        for (Menu eachDrinkMenu:drinkMenu) {
+        for (Menu eachDrinkMenu : drinkMenu) {
             eachDrinkCnt += eachDrinkMenu.cnt;
         }
         return eachDrinkCnt;

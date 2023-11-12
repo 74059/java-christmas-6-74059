@@ -18,7 +18,7 @@ public class EventBenefits {
 
     public static int christmasDDayBenefit(int dates) {
         if ((25 - dates) >= 0) {
-            return 1000 + (100 * (dates-1));
+            return 1000 + (100 * (dates - 1));
         }
         return 0;
     }
