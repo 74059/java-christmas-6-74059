@@ -76,22 +76,24 @@
     * [x] 출력
 * 할인 후 예상 결제 금액
     * `{할인 전 총주문 금액} - {총해택 금액}`
-    * [ ] 출력
+    * [x] 출력
 * 12월 이벤트 배지
-    * [ ] 총혜택 금액이 2만원 이상일 경우 `산타`, 1만원 이상일 경우 `트리`, 5천원 이상일 경우 `별` (함수로 나누어return 형식으로 구현할 예정)
-    * [ ] 출력
+    * [x] 총혜택 금액이 2만원 이상일 경우 `산타`, 1만원 이상일 경우 `트리`, 5천원 이상일 경우 `별` (함수로 나누어return 형식으로 구현할 예정)
+    * [x] 출력
 
 # 폴더 구성 및 기능
 
 * controller
-    * ChristmasController.java
+    * ChristmasController.java : model과 view를 연결시키는 controller
 * model
-    * Menu.java (enum)
-    * ReservationRestaurant.java
-    * EventBenefits.java
+    * VisitDate.java : 식당 예상 방문 날짜 read 시 예외 처리
+    * OrderMenu.java : 주문할 메뉴에 대한 예외 처리 및 count
+    * Menu.java (enum) : 주문된 정보에 대해 다양한 조건으로 get
+    * EventBenefits.java : 이벤트 금액 계산
 * view
     * InputView.java
     * OutputView.java
+    * ExceptionView.java
 * Application.java
 
 # 예외 처리 부분
