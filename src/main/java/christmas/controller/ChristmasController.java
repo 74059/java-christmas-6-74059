@@ -54,6 +54,7 @@ public class ChristmasController {
         OutputView.printTotalOrderPriceBeforeDiscount(totalOrderPriceBeforeDiscount);
         boolean givePresent = canGetChampagne(totalOrderPriceBeforeDiscount);
         OutputView.printCanGetChampagne(givePresent);
+        BenefitLists(totalOrderPriceBeforeDiscount);
     }
 
     public boolean canGetChampagne(int totalOrderPriceBeforeDiscount) {
@@ -65,11 +66,9 @@ public class ChristmasController {
 
     public void BenefitLists(int totalOrderPriceBeforeDiscount) {
         if (totalOrderPriceBeforeDiscount < 10000) {
-            OutputView.printBenefit(false);
+            OutputView.printNoBenefit();
             return;
         }
-        OutputView.printChristmasDDay(christmasDDayBenefit());
-        OutputView.printWeekDayEnd(weekDayEndBenefit());
     }
 
     public int christmasDDayBenefit() {

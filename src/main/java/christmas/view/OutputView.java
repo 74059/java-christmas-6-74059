@@ -53,12 +53,9 @@ public class OutputView {
         System.out.println(NOTHING);
     }
 
-    public static void printBenefit(boolean overTenThousand) {
+    public static void printNoBenefit() {
         System.out.println(BENEFIT_LISTS);
-        if (!overTenThousand) {
-            System.out.println(NOTHING);
-            return;
-        }
+        System.out.println(NOTHING);
     }
 
     public static void printChristmasDDay(int christmasDDayB) {
