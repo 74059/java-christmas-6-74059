@@ -14,6 +14,7 @@ public class ChristmasController {
     private int givePresent = 0;
 
     public void run() {
+        Menu.removeAllCnt();
         OutputView.printStartEvent();
         visitDate();
         orderMenu();
