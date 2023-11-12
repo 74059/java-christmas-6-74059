@@ -4,6 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 public class EventBenefits {
+    public static int canGetChampagne(int totalOrderPriceBeforeDiscount) {
+        if (totalOrderPriceBeforeDiscount >= 120000) {
+            return 25000;
+        }
+        return 0;
+    }
+
     public static int christmasDDayBenefit(int dates) {
         if ((25 - dates) >= 0) {
             return 1000 + (100 * (dates-1));

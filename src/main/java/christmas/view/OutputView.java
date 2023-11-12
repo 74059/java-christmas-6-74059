@@ -45,9 +45,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printCanGetChampagne(boolean canGetChampagne) {
+    public static void printCanGetChampagne(int canGetChampagne) {
         System.out.println(GIVE_SERVICE_MESS);
-        if (canGetChampagne) {
+        if (canGetChampagne != 0) {
             System.out.println(GIVE_CHAMPAGNE);
             System.out.println();
             return;

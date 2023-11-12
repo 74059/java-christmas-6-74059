@@ -53,16 +53,9 @@ public class ChristmasController {
         OutputView.printOrderMenu(Menu.countOrderMenuNameAndNum());
         int totalOrderPriceBeforeDiscount = Menu.totalOrderPrice();
         OutputView.printTotalOrderPriceBeforeDiscount(totalOrderPriceBeforeDiscount);
-        boolean givePresent = canGetChampagne(totalOrderPriceBeforeDiscount);
+        int givePresent = EventBenefits.canGetChampagne(totalOrderPriceBeforeDiscount);
         OutputView.printCanGetChampagne(givePresent);
         BenefitLists(totalOrderPriceBeforeDiscount);
-    }
-
-    public boolean canGetChampagne(int totalOrderPriceBeforeDiscount) {
-        if (totalOrderPriceBeforeDiscount >= 120000) {
-            return true;
-        }
-        return false;
     }
 
     public void BenefitLists(int totalOrderPriceBeforeDiscount) {
