@@ -6,7 +6,7 @@ import java.util.List;
 public class EventBenefits {
     public static int christmasDDayBenefit(int dates) {
         if ((25 - dates) >= 0) {
-            return 3400 - (100 * dates);
+            return 1000 + (100 * (dates-1));
         }
         return 0;
     }
