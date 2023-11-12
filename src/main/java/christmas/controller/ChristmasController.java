@@ -56,6 +56,7 @@ public class ChristmasController {
         int givePresent = EventBenefits.canGetChampagne(totalOrderPriceBeforeDiscount);
         OutputView.printCanGetChampagne(givePresent);
         BenefitLists(totalOrderPriceBeforeDiscount);
+        OutputView.printPresentEvent(givePresent);
     }
 
     public void BenefitLists(int totalOrderPriceBeforeDiscount) {

@@ -17,6 +17,7 @@ public class OutputView {
     private static final String CHRISTMAS_D_DAY = "크리스마스 디데이 할인: -";
     private static final String SPECIAL = "특별";
     private static final String BENEFIT = " 할인: -";
+    private static final String PRESENT_EVENT = "증정 이벤트: -";
     private static final String ORDER_NUM_UNIT = "개";
     private static final String PRICE_UNIT = "원";
     private static final String NOTHING = "없음";
@@ -85,6 +86,13 @@ public class OutputView {
         if (specialDiscount != 0) {
             DecimalFormat decFormat = new DecimalFormat("###,###");
             System.out.println(SPECIAL + BENEFIT + decFormat.format(specialDiscount) + PRICE_UNIT);
+        }
+    }
+
+    public static void printPresentEvent(int givePresent) {
+        if (givePresent != 0) {
+            DecimalFormat decFormat = new DecimalFormat("###,###");
+            System.out.println(PRESENT_EVENT + decFormat.format(givePresent) + PRICE_UNIT);
         }
     }
 }
