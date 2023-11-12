@@ -48,9 +48,11 @@ public class OutputView {
         System.out.println(GIVE_SERVICE_MESS);
         if (canGetChampagne) {
             System.out.println(GIVE_CHAMPAGNE);
+            System.out.println();
             return;
         }
         System.out.println(NOTHING);
+        System.out.println();
     }
 
     public static void printNoBenefit() {
