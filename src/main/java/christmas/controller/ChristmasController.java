@@ -11,6 +11,7 @@ import java.util.List;
 public class ChristmasController {
     private int dates = -1;
     private int totalBenefitPrice = 0;
+    private int givePresent = 0;
 
     public void run() {
         OutputView.printStartEvent();
@@ -55,7 +56,7 @@ public class ChristmasController {
         OutputView.printOrderMenu(Menu.countOrderMenuNameAndNum());
         int totalOrderPriceBeforeDiscount = Menu.totalOrderPrice();
         OutputView.printTotalOrderPriceBeforeDiscount(totalOrderPriceBeforeDiscount);
-        int givePresent = EventBenefits.canGetChampagne(totalOrderPriceBeforeDiscount);
+        givePresent = EventBenefits.canGetChampagne(totalOrderPriceBeforeDiscount);
         OutputView.printCanGetChampagne(givePresent);
         BenefitLists(givePresent, totalOrderPriceBeforeDiscount);
         totalBenefit();
@@ -71,11 +72,11 @@ public class ChristmasController {
         int specialDiscount = EventBenefits.specialDiscount(dates);
         OutputView.printBenefit(christmasDDayBenefit, weekDayEndBenefit, specialDiscount, givePresent);
         int weekDayEndBenefitPrice = (int) weekDayEndBenefit.get(1);
-        totalBenefitPrice += (christmasDDayBenefit + weekDayEndBenefitPrice + specialDiscount + givePresent);
+        totalBenefitPrice += (christmasDDayBenefit + weekDayEndBenefitPrice + specialDiscount);
     }
 
     public void totalBenefit() {
-        OutputView.printTotalBenefitPrice(totalBenefitPrice);
+        OutputView.printTotalBenefitPrice(totalBenefitPrice + givePresent);
     }
 
     public void predictPayAfterDiscount() {
