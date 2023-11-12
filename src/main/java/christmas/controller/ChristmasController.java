@@ -56,12 +56,11 @@ public class ChristmasController {
         OutputView.printTotalOrderPriceBeforeDiscount(totalOrderPriceBeforeDiscount);
         int givePresent = EventBenefits.canGetChampagne(totalOrderPriceBeforeDiscount);
         OutputView.printCanGetChampagne(givePresent);
-        BenefitLists(totalOrderPriceBeforeDiscount);
-        OutputView.printPresentEvent(givePresent);
-        totalBenefitPrice += totalOrderPriceBeforeDiscount;
+        BenefitLists(givePresent, totalOrderPriceBeforeDiscount);
+        totalBenefit();
     }
 
-    public void BenefitLists(int totalOrderPriceBeforeDiscount) {
+    public void BenefitLists(int givePresent, int totalOrderPriceBeforeDiscount) {
         if (totalOrderPriceBeforeDiscount < 10000) {
             OutputView.printNoBenefit();
             return;
@@ -69,8 +68,12 @@ public class ChristmasController {
         int christmasDDayBenefit = EventBenefits.christmasDDayBenefit(dates);
         List<Serializable> weekDayEndBenefit = EventBenefits.weekDayEndBenefit(dates);
         int specialDiscount = EventBenefits.specialDiscount(dates);
-        OutputView.printBenefit(christmasDDayBenefit, weekDayEndBenefit, specialDiscount);
+        OutputView.printBenefit(christmasDDayBenefit, weekDayEndBenefit, specialDiscount, givePresent);
         int weekDayEndBenefitPrice = (int) weekDayEndBenefit.get(1);
-        totalBenefitPrice += (christmasDDayBenefit + weekDayEndBenefitPrice + specialDiscount);
+        totalBenefitPrice += (christmasDDayBenefit + weekDayEndBenefitPrice + specialDiscount + givePresent);
+    }
+
+    public void totalBenefit() {
+        OutputView.printTotalBenefitPrice(totalBenefitPrice);
     }
 }
