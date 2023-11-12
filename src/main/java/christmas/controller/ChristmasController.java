@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.EventBenefits;
 import christmas.model.Menu;
 import christmas.view.OutputView;
 import christmas.view.InputView;
@@ -15,7 +16,7 @@ public class ChristmasController {
         visitDate();
         orderMenu();
         OutputView.printEventBenefitsPreview(dates);
-        eventBenefits();
+        showEventBenefits();
     }
 
     public void visitDate() {
@@ -48,7 +49,7 @@ public class ChristmasController {
         }
     }
 
-    public void eventBenefits() {
+    public void showEventBenefits() {
         OutputView.printOrderMenu(Menu.countOrderMenuNameAndNum());
         int totalOrderPriceBeforeDiscount = Menu.totalOrderPrice();
         OutputView.printTotalOrderPriceBeforeDiscount(totalOrderPriceBeforeDiscount);
@@ -69,20 +70,8 @@ public class ChristmasController {
             OutputView.printNoBenefit();
             return;
         }
-        OutputView.printBenefit(christmasDDayBenefit(), weekDayEndBenefit());
-    }
-
-    public int christmasDDayBenefit() {
-        if ((25 - dates) >= 0) {
-            return 3400 - (100 * dates);
-        }
-        return 0;
-    }
-
-    public List<Serializable> weekDayEndBenefit() {
-        if ((dates % 7) == 1 || (dates % 7) == 2) {
-            return List.of("주말", Menu.countSpecificMenuCnt("main") * 2023);
-        }
-        return List.of("평일", Menu.countSpecificMenuCnt("dessert") * 2023);
+        int christmasDDayBenefit = EventBenefits.christmasDDayBenefit(dates);
+        List<Serializable> weekDayEndBenefit = EventBenefits.weekDayEndBenefit(dates);
+        OutputView.printBenefit(christmasDDayBenefit, weekDayEndBenefit);
     }
 }
