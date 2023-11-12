@@ -18,6 +18,7 @@ public class ChristmasController {
         orderMenu();
         OutputView.printEventBenefitsPreview(dates);
         showEventBenefits();
+        predictPayAfterDiscount();
     }
 
     public void visitDate() {
@@ -75,5 +76,10 @@ public class ChristmasController {
 
     public void totalBenefit() {
         OutputView.printTotalBenefitPrice(totalBenefitPrice);
+    }
+
+    public void predictPayAfterDiscount() {
+        int totalOrderPriceBeforeDiscount = Menu.totalOrderPrice();
+        OutputView.printPredictPayAfterDiscount(totalOrderPriceBeforeDiscount - totalBenefitPrice);
     }
 }
