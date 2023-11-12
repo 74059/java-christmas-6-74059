@@ -10,6 +10,7 @@ import java.util.List;
 
 public class ChristmasController {
     private int dates = -1;
+    private int totalBenefitPrice = 0;
 
     public void run() {
         OutputView.printStartEvent();
@@ -57,6 +58,7 @@ public class ChristmasController {
         OutputView.printCanGetChampagne(givePresent);
         BenefitLists(totalOrderPriceBeforeDiscount);
         OutputView.printPresentEvent(givePresent);
+        totalBenefitPrice += totalOrderPriceBeforeDiscount;
     }
 
     public void BenefitLists(int totalOrderPriceBeforeDiscount) {
@@ -68,5 +70,7 @@ public class ChristmasController {
         List<Serializable> weekDayEndBenefit = EventBenefits.weekDayEndBenefit(dates);
         int specialDiscount = EventBenefits.specialDiscount(dates);
         OutputView.printBenefit(christmasDDayBenefit, weekDayEndBenefit, specialDiscount);
+        int weekDayEndBenefitPrice = (int) weekDayEndBenefit.get(1);
+        totalBenefitPrice += (christmasDDayBenefit + weekDayEndBenefitPrice + specialDiscount);
     }
 }
