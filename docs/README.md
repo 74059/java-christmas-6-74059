@@ -85,6 +85,7 @@
 
 * controller
     * ChristmasController.java : model과 view를 연결시키는 controller
+    * ExceptionController.java : Exception에 대해 model과 view를 연결시키는 controller
 * model
     * VisitDate.java : 식당 예상 방문 날짜 read 시 예외 처리
     * OrderMenu.java : 주문할 메뉴에 대한 예외 처리 및 count
