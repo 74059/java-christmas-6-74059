@@ -52,4 +52,13 @@ public class EventBenefitsTest {
         int starBenefits = EventBenefits.specialDiscount(dates);
         Assertions.assertThat(starBenefits).isEqualTo(answer);
     }
+
+    @DisplayName("할인 받은 금액이 1만원 이상 2만원 미만일 경우 트리 뱃지를 받는다.")
+    @Test
+    void eventBenefitsBadge() {
+        int benefits = 15000;
+        String answer = "트리";
+        String benefitsBadge = EventBenefits.decemberEventBadge(benefits);
+        Assertions.assertThat(benefitsBadge).isEqualTo(answer);
+    }
 }
