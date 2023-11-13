@@ -9,6 +9,7 @@ import java.util.List;
 public class OrderMenuTest {
     List<String> NOTHING = List.of(new String[]{});
     String NOT_HYPHEN_IN_MENU = "해산물파스타2";
+    List<String> SPLIT_HYPHEN_NOT_CONTAIN_2 = List.of(new String[]{"해산물파스타2"});
 
     @DisplayName("읽어온 메뉴-개수 에 공백이 있으면 제거한다.")
     @Test
@@ -39,6 +40,13 @@ public class OrderMenuTest {
     @Test
     void createOrderMenuNotHyphen() {
         Assertions.assertThatThrownBy(() -> OrderMenu.isSplitValueInOrderMenu(NOT_HYPHEN_IN_MENU))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("읽어온 메뉴-개수 의 각 원소들을 - 으로 split 시켰을 때, 원소가 두 개가 아니라면 예외가 발생한다.")
+    @Test
+    void createOrderMenuNotContain2() {
+        Assertions.assertThatThrownBy(() -> OrderMenu.isContainSize2(SPLIT_HYPHEN_NOT_CONTAIN_2))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
