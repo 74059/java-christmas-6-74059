@@ -43,4 +43,13 @@ public class EventBenefitsTest {
         List<Serializable> weekBenefits = EventBenefits.weekDayEndBenefit(dates);
         Assertions.assertThat(weekBenefits).contains(weekday);
     }
+
+    @DisplayName("이벤트 달력에 별이 있으면 할인이 된다.")
+    @Test
+    void eventBenefitsStarInCalender() {
+        int dates = 24;
+        int answer = 1000;
+        int starBenefits = EventBenefits.specialDiscount(dates);
+        Assertions.assertThat(starBenefits).isEqualTo(answer);
+    }
 }
