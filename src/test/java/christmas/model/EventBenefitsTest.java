@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class EventBenefitsTest {
@@ -32,5 +33,14 @@ public class EventBenefitsTest {
         int answer = 0;
         int canCustomerGetChristmasDDayBenefit = EventBenefits.christmasDDayBenefit(dates);
         Assertions.assertThat(canCustomerGetChristmasDDayBenefit).isEqualTo(answer);
+    }
+
+    @DisplayName("평일에 구매할 경우 디저트 할인이 된다.")
+    @Test
+    void eventBenefitsWeekdayDessert() {
+        int dates = 27;
+        String weekday = "평일";
+        List<Serializable> weekBenefits = EventBenefits.weekDayEndBenefit(dates);
+        Assertions.assertThat(weekBenefits).contains(weekday);
     }
 }
