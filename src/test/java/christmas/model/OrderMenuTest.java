@@ -11,6 +11,8 @@ public class OrderMenuTest {
     String NOT_HYPHEN_IN_MENU = "해산물파스타2";
     List<String> SPLIT_HYPHEN_NOT_CONTAIN_2 = List.of(new String[]{"해산물파스타2"});
     String NOT_SATISFIED_CONDITION_NUM_PART = "0";
+    String NOT_SATISFIED_CONDITION_MENU_PART = "메뉴에없음";
+
 
     @DisplayName("읽어온 메뉴-개수 에 공백이 있으면 제거한다.")
     @Test
@@ -64,6 +66,13 @@ public class OrderMenuTest {
     @Test
     void createOrderMenuNumPartNotSatisfiedCondition() {
         Assertions.assertThatThrownBy(() -> OrderMenu.checkOrderNumPart(NOT_SATISFIED_CONDITION_NUM_PART))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("메뉴-개수 중, 메뉴 부분의 조건(1. 메뉴판에 없는 메뉴)을 만족하지 않는다면 예외가 발생한다.")
+    @Test
+    void createOrderMenuPartNotSatisfiedCondition() {
+        Assertions.assertThatThrownBy(() -> OrderMenu.checkOrderMenuPart(NOT_SATISFIED_CONDITION_MENU_PART))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
