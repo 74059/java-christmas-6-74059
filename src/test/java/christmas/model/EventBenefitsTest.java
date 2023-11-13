@@ -15,4 +15,22 @@ public class EventBenefitsTest {
         int canCustomerGetChampagne = EventBenefits.canGetChampagne(purchasePrice);
         Assertions.assertThat(canCustomerGetChampagne).isEqualTo(answer);
     }
+
+    @DisplayName("25일 이전에 구매할 경우, 크리스마스 디데이 할인이 된다.")
+    @Test
+    void eventBenefitsChristmasDDayBefore() {
+        int dates = 24;
+        int answer = 3300;
+        int canCustomerGetChristmasDDayBenefit = EventBenefits.christmasDDayBenefit(dates);
+        Assertions.assertThat(canCustomerGetChristmasDDayBenefit).isEqualTo(answer);
+    }
+
+    @DisplayName("25일 이후에 구매할 경우, 크리스마스 디데이 할인이 되지 않는다.")
+    @Test
+    void eventBenefitsChristmasDDayAfter() {
+        int dates = 27;
+        int answer = 0;
+        int canCustomerGetChristmasDDayBenefit = EventBenefits.christmasDDayBenefit(dates);
+        Assertions.assertThat(canCustomerGetChristmasDDayBenefit).isEqualTo(answer);
+    }
 }
