@@ -12,6 +12,7 @@ public class OrderMenuTest {
     List<String> SPLIT_HYPHEN_NOT_CONTAIN_2 = List.of(new String[]{"해산물파스타2"});
     String NOT_SATISFIED_CONDITION_NUM_PART = "0";
     String NOT_SATISFIED_CONDITION_MENU_PART = "메뉴에없음";
+    List<String> CONTAIN_SAME_MENU = List.of(new String[]{"해산물파스타", "해산물파스타", "레드와인"});
 
 
     @DisplayName("읽어온 메뉴-개수 에 공백이 있으면 제거한다.")
@@ -73,6 +74,13 @@ public class OrderMenuTest {
     @Test
     void createOrderMenuPartNotSatisfiedCondition() {
         Assertions.assertThatThrownBy(() -> OrderMenu.checkOrderMenuPart(NOT_SATISFIED_CONDITION_MENU_PART))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("동일한 메뉴를 두 번 이상 작성했을 경우 예외가 발생한다.")
+    @Test
+    void createOrderMenuDifferentSizeAfterDuplicate() {
+        Assertions.assertThatThrownBy(() -> OrderMenu.isChangeNumWhenMenuDuplicate(CONTAIN_SAME_MENU))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
