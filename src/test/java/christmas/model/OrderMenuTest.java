@@ -43,6 +43,15 @@ public class OrderMenuTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("읽어온 메뉴-개수 의 각 원소들을 - 로 split 한다.")
+    @Test
+    void orderMenuSplitHyphen() {
+        String ORDER_MENU = "해산물파스타-2";
+        List<String> SPLIT_WITH_HYPHEN = List.of(new String[]{"해산물파스타", "2"});
+        List<String> splitHyphenOrderMenu = OrderMenu.splitHyphen(ORDER_MENU);
+        Assertions.assertThat(splitHyphenOrderMenu).isEqualTo(SPLIT_WITH_HYPHEN);
+    }
+
     @DisplayName("읽어온 메뉴-개수 의 각 원소들을 - 으로 split 시켰을 때, 원소가 두 개가 아니라면 예외가 발생한다.")
     @Test
     void createOrderMenuNotContain2() {
