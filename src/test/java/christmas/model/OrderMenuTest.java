@@ -11,7 +11,6 @@ import java.util.List;
 public class OrderMenuTest {
     List<String> NOTHING = List.of(new String[]{});
     List<String> SPLIT_HYPHEN_NOT_CONTAIN_2 = List.of(new String[]{"해산물파스타2"});
-    String NOT_SATISFIED_CONDITION_NUM_PART = "0";
     String NOT_SATISFIED_CONDITION_MENU_PART = "메뉴에없음";
     List<String> CONTAIN_SAME_MENU = List.of(new String[]{"해산물파스타", "해산물파스타", "레드와인"});
 
@@ -66,9 +65,10 @@ public class OrderMenuTest {
     }
 
     @DisplayName("메뉴-개수 중, 개수 부분의 조건(1. int형 / 2. 1 이상)을 만족하지 않는다면 예외가 발생한다.")
-    @Test
-    void createOrderMenuNumPartNotSatisfiedCondition() {
-        Assertions.assertThatThrownBy(() -> OrderMenu.checkOrderNumPart(NOT_SATISFIED_CONDITION_NUM_PART))
+    @ValueSource(strings = {"ddd", "0", "-1"})
+    @ParameterizedTest
+    void createOrderMenuNumPartNotSatisfiedCondition(String notSatisfiedCondition) {
+        Assertions.assertThatThrownBy(() -> OrderMenu.checkOrderNumPart(notSatisfiedCondition))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
