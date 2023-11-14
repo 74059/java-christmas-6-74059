@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -15,6 +16,15 @@ public class MenuTest {
         List<String> allMenu = Menu.getAllMenu();
         Assertions.assertThat(allMenu).contains("양송이수프", "타파스", "시저샐러드", "티본스테이크",
                 "바비큐립", "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림", "제로콜라", "레드와인", "샴페인");
+    }
+
+    @DisplayName("선택한 메뉴가 내가 뽑고자하는 menuType(main)과 동일하다면 가져온다.")
+    @EnumSource(value = Menu.class, names = {"tBoneSteak", "barbecuedRibs", "seafoodPasta", "christmasPasta"})
+    @ParameterizedTest
+    void createOrderMenuNotHyphen(Menu menu) {
+        String pickMenuType = "main";
+        String eachMenu = String.valueOf(Menu.checkMenuType(menu, pickMenuType));
+        Assertions.assertThat(eachMenu).contains(String.valueOf(menu));
     }
 
     @DisplayName("특정 menuType(drink)의 메뉴를 가져온다.")
