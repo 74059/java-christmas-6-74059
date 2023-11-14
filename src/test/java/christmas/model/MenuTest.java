@@ -3,8 +3,9 @@ package christmas.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.ParameterizedTest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuTest {
@@ -17,13 +18,10 @@ public class MenuTest {
     }
 
     @DisplayName("특정 menuType(drink)의 메뉴를 가져온다.")
-    @Test
-    void menuGetSpecificMenuType() {
+    @EnumSource(value = Menu.class, names = {"zeroCoke", "redWine", "champagne"})
+    @ParameterizedTest
+    void menuGetSpecificMenuType(Menu menu) {
         List<Menu> drinkMenu = Menu.getMenuOfSpecificMenuType("drink");
-        List<String> drinkMenuForMark = new ArrayList<>();
-        for (Menu eachDrinkMenu : drinkMenu) {
-            drinkMenuForMark.add(eachDrinkMenu.toString());
-        }
-        Assertions.assertThat(drinkMenuForMark).contains("zeroCoke", "redWine", "champagne");
+        Assertions.assertThat(drinkMenu).contains(menu);
     }
 }
