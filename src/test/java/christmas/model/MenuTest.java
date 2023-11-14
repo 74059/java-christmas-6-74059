@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class MenuTest {
@@ -64,5 +65,18 @@ public class MenuTest {
         Menu.updateOrder(orderMenu);
         Assertions.assertThatThrownBy(() -> Menu.isMenuCntNotOver20())
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("주문한 메뉴 전체 가져오기")
+    @ValueSource(strings = {"초코케이크-2,레드와인-1"})
+    @ParameterizedTest
+    void menuGetALLOrderMenu(String orderMenu) {
+        Menu.removeAllCnt();
+        Menu.updateOrder(orderMenu);
+        HashMap<String, Integer> dessertMenu = Menu.countOrderMenuNameAndNum();
+        HashMap<String, Integer> answer = new HashMap<>();
+        answer.put("초코케이크", 2);
+        answer.put("레드와인", 1);
+        Assertions.assertThat(dessertMenu).isEqualTo(answer);
     }
 }
