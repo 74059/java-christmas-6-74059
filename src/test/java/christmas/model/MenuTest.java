@@ -55,4 +55,14 @@ public class MenuTest {
         int dessertMenu = Menu.countSpecificMenuCnt(pickMenuType);
         Assertions.assertThat(dessertMenu).isEqualTo(2);
     }
+
+    @DisplayName("주문한 메뉴의 전체 개수가 20개 이상일 경우 예외가 발생한다.")
+    @ValueSource(strings = {"양송이수프-21", "타파스-10,시저샐러드-12"})
+    @ParameterizedTest
+    void createMenuCntOver20(String orderMenu) {
+        Menu.removeAllCnt();
+        Menu.updateOrder(orderMenu);
+        Assertions.assertThatThrownBy(() -> Menu.isMenuCntNotOver20())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
