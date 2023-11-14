@@ -34,4 +34,14 @@ public class MenuTest {
         List<Menu> drinkMenu = Menu.getMenuOfSpecificMenuType("drink");
         Assertions.assertThat(drinkMenu).contains(menu);
     }
+
+    @DisplayName("주문한 메뉴에 drink만 있을 경우, 예외가 발생한다.")
+    @ValueSource(strings = {"샴페인-2,레드와인-1", "제로콜라-3"})
+    @ParameterizedTest
+    void createMenuOnlyDrink(String orderMenu) {
+        Menu.removeAllCnt();
+        Menu.updateOrder(orderMenu);
+        Assertions.assertThatThrownBy(() -> Menu.isOrderOnlyDrink())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
