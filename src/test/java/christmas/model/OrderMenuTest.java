@@ -26,11 +26,11 @@ public class OrderMenuTest {
     }
 
     @DisplayName("읽어온 메뉴-개수 를 , 을 기준으로 split 한다.")
-    @Test
-    void orderMenuSplitComma() {
-        String ORDER_MENU = "해산물파스타-2,레드와인-1";
+    @ValueSource(strings = {"해산물파스타-2,레드와인-1"})
+    @ParameterizedTest
+    void orderMenuSplitComma(String orderMenuNum) {
         List<String> SPLIT_WITH_COMMA = List.of(new String[]{"해산물파스타-2", "레드와인-1"});
-        List<String> splitCommaOrderMenu = OrderMenu.splitComma(ORDER_MENU);
+        List<String> splitCommaOrderMenu = OrderMenu.splitComma(orderMenuNum);
         Assertions.assertThat(splitCommaOrderMenu).isEqualTo(SPLIT_WITH_COMMA);
     }
 
