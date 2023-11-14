@@ -3,12 +3,13 @@ package christmas.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.List;
 
 public class OrderMenuTest {
     List<String> NOTHING = List.of(new String[]{});
-    String NOT_HYPHEN_IN_MENU = "해산물파스타2";
     List<String> SPLIT_HYPHEN_NOT_CONTAIN_2 = List.of(new String[]{"해산물파스타2"});
     String NOT_SATISFIED_CONDITION_NUM_PART = "0";
     String NOT_SATISFIED_CONDITION_MENU_PART = "메뉴에없음";
@@ -41,9 +42,10 @@ public class OrderMenuTest {
     }
 
     @DisplayName("읽어온 메뉴-개수 의 각 원소들에 - 이 없으면 예외가 발생한다.")
-    @Test
-    void createOrderMenuNotHyphen() {
-        Assertions.assertThatThrownBy(() -> OrderMenu.isSplitValueInOrderMenu(NOT_HYPHEN_IN_MENU))
+    @ValueSource(strings = {"해산물파스타2", "레드와인"})
+    @ParameterizedTest
+    void createOrderMenuNotHyphen(String menuNum) {
+        Assertions.assertThatThrownBy(() -> OrderMenu.isSplitValueInOrderMenu(menuNum))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
