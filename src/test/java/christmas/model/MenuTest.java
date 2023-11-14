@@ -21,7 +21,7 @@ public class MenuTest {
     @DisplayName("선택한 메뉴가 내가 뽑고자하는 menuType(main)과 동일하다면 가져온다.")
     @EnumSource(value = Menu.class, names = {"tBoneSteak", "barbecuedRibs", "seafoodPasta", "christmasPasta"})
     @ParameterizedTest
-    void createOrderMenuNotHyphen(Menu menu) {
+    void menuGetOnlyMain(Menu menu) {
         String pickMenuType = "main";
         String eachMenu = String.valueOf(Menu.checkMenuType(menu, pickMenuType));
         Assertions.assertThat(eachMenu).contains(String.valueOf(menu));
