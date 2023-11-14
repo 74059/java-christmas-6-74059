@@ -79,4 +79,14 @@ public class MenuTest {
         answer.put("레드와인", 1);
         Assertions.assertThat(dessertMenu).isEqualTo(answer);
     }
+
+    @DisplayName("주문한 메뉴 할인 안된 금액 가져오기")
+    @ValueSource(strings = {"초코케이크-2,레드와인-1"})
+    @ParameterizedTest
+    void menuGetPrice(String orderMenu) {
+        Menu.removeAllCnt();
+        Menu.updateOrder(orderMenu);
+        int answer = 90000;
+        Assertions.assertThat(Menu.totalOrderPrice()).isEqualTo(answer);
+    }
 }
