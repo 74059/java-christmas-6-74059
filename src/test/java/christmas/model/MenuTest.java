@@ -44,4 +44,15 @@ public class MenuTest {
         Assertions.assertThatThrownBy(() -> Menu.isOrderOnlyDrink())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("주문한 메뉴 중 특정 menuType(dessert)만 count하여 가져온다.")
+    @ValueSource(strings = {"초코케이크-2,레드와인-1", "아이스크림-2"})
+    @ParameterizedTest
+    void menuGetSpecificMenuTypeCnt(String orderMenu) {
+        String pickMenuType = "dessert";
+        Menu.removeAllCnt();
+        Menu.updateOrder(orderMenu);
+        int dessertMenu = Menu.countSpecificMenuCnt(pickMenuType);
+        Assertions.assertThat(dessertMenu).isEqualTo(2);
+    }
 }
