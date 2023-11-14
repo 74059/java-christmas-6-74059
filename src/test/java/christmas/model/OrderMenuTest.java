@@ -3,15 +3,18 @@ package christmas.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class OrderMenuTest {
     List<String> NOTHING = List.of(new String[]{});
     List<String> SPLIT_HYPHEN_NOT_CONTAIN_2 = List.of(new String[]{"해산물파스타2"});
-    List<String> CONTAIN_SAME_MENU = List.of(new String[]{"해산물파스타", "해산물파스타", "레드와인"});
 
 
     @DisplayName("읽어온 메뉴-개수 에 공백이 있으면 제거한다.")
@@ -80,9 +83,17 @@ public class OrderMenuTest {
     }
 
     @DisplayName("동일한 메뉴를 두 번 이상 작성했을 경우 예외가 발생한다.")
-    @Test
-    void createOrderMenuDifferentSizeAfterDuplicate() {
-        Assertions.assertThatThrownBy(() -> OrderMenu.isChangeNumWhenMenuDuplicate(CONTAIN_SAME_MENU))
+    @MethodSource("generateSameMENUData")
+    @ParameterizedTest
+    void createOrderMenuDifferentSizeAfterDuplicate(List<String> containSameMenu) {
+        Assertions.assertThatThrownBy(() -> OrderMenu.isChangeNumWhenMenuDuplicate(containSameMenu))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    static Stream<Arguments> generateSameMENUData() {
+        return Stream.of(
+                Arguments.of(Arrays.asList("해산물파스타", "해산물파스타", "레드와인")),
+                Arguments.of(Arrays.asList("제로콜라", "초코케이크", "제로콜라"))
+        );
     }
 }
