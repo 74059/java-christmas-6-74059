@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 public class OrderMenuTest {
     List<String> NOTHING = List.of(new String[]{});
 
-
     @DisplayName("읽어온 메뉴-개수 에 공백이 있으면 제거한다.")
     @Test
     void orderMenuRemoveSpace() {
